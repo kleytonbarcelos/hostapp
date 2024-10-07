@@ -1,8 +1,19 @@
-import { headers } from "next/headers";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const headersList = headers();
-  const host = headersList.get("x-host") || "Host não identificado";
+  const [host, setHost] = useState("Carregando...");
+
+  useEffect(() => {
+    // Faz uma requisição para a API que captura o host
+    fetch("/api/host")
+      .then((res) => res.json())
+      .then((data) => {
+        setHost(data.host);
+      })
+      .catch((err) => {
+        setHost("Host não identificado");
+      });
+  }, []);
 
   return (
     <div>
