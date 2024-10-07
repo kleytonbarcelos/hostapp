@@ -1,9 +1,14 @@
-import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 
-export function middleware(req) {
-  const host = req.nextUrl.host || "Host não identificado";
+export default function Home() {
+  // Captura os headers diretamente dentro do componente
+  const headersList = headers();
+  const host = headersList.get("host") || "Host não identificado";
 
-  const response = NextResponse.next();
-  response.headers.set("x-host", host);
-  return response;
+  return (
+    <div>
+      <h1>Identificação do Host</h1>
+      <p>O acesso está vindo do domínio: {host}</p>
+    </div>
+  );
 }
