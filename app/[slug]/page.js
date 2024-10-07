@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
-export default function Home() {
+export default function SlugPage() {
+  const { slug } = useParams(); // Captura a slug da URL
   const [host, setHost] = useState("Carregando...");
 
   useEffect(() => {
@@ -20,8 +22,10 @@ export default function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="text-center">
-        <h1 className="text-3xl font-bold mb-4">Página Principal</h1>
-        <p>Visite qualquer rota para ver as slugs dinâmicas em ação!</p>
+        <h1 className="text-2xl font-bold mb-4">Página de Slug</h1>
+        <p className="mb-2">
+          A slug da URL é: <strong>{slug}</strong>
+        </p>
         <p>
           O acesso está vindo do domínio: <strong>{host}</strong>
         </p>

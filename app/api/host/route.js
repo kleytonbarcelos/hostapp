@@ -1,6 +1,8 @@
-import { NextResponse } from "next/server";
+export async function GET(request) {
+  const host = request.headers.get("host") || "Host não identificado";
 
-export async function GET(req) {
-  const host = req.headers.get("host") || "Host não identificado";
-  return NextResponse.json({ host });
+  return new Response(JSON.stringify({ host }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }
