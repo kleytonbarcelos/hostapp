@@ -1,16 +1,18 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [host, setHost] = useState("Carregando...");
 
   useEffect(() => {
-    // Faz uma requisição para a API que captura o host
+    // Faz uma requisição para a rota API para pegar o host
     fetch("/api/host")
       .then((res) => res.json())
       .then((data) => {
         setHost(data.host);
       })
-      .catch((err) => {
+      .catch(() => {
         setHost("Host não identificado");
       });
   }, []);
