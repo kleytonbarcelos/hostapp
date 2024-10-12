@@ -8,7 +8,8 @@ export default function Home() {
   return (
     <div>
       <h1>Identificação do Host</h1>
-      <p>O acesso está vindo do domínio: {host}</p>
+      <p></p>
+      <strong>{host}</strong>
     </div>
   );
 }

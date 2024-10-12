@@ -6,7 +6,6 @@ export default function Home() {
   const [host, setHost] = useState("Carregando...");
 
   useEffect(() => {
-    // Faz uma requisição para a rota API para pegar o host
     fetch("/api/host")
       .then((res) => res.json())
       .then((data) => {
